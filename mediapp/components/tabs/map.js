@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 import { StyleSheet} from 'react-native';
 import axios from 'axios'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-community/async-storage';
 
 // import native base
 import {Text ,Button, FooterTab, Footer,Grid, Col,Container,Content, Icon, Drawer } from 'native-base';
@@ -68,11 +68,6 @@ export default class Map extends React.Component {
 
     }
 
-
-    componentWillMount(){
-        
-    }
-
     componentDidMount(){
         this.renderRadio();
     }   
@@ -95,7 +90,7 @@ export default class Map extends React.Component {
                         loaded: true
                     });
                     
-                    console.log(response.data)
+                    // console.log(response.data)
                 });
             });
         },
@@ -106,7 +101,8 @@ export default class Map extends React.Component {
     renderMarks(){
         
        return this.state.sucursales.map( sucursal => {
-            return <MapView.Marker 
+            return <MapView.Marker
+                key={sucursal.latitud+'-'+sucursal.longitud}
                 coordinate={{
                     latitude: parseFloat(sucursal.latitud),
                     longitude: parseFloat(sucursal.longitud)
